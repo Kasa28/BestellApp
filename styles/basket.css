@@ -245,3 +245,41 @@
     right: calc((100vw - 1200px) / 2 + 16px);
   }
 }
+
+
+@media (max-width: 768px) {
+  .cart-sidebar {
+    width: 100vw;        
+    right: 0;            
+    border-radius: 0;  
+    max-width: none;     
+  }
+
+  .cart-sidebar.open {
+    transform: translateX(0); 
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+   .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .cart-item-name,
+  .cart-item-price,
+  .cart-item-controls {
+    width: 100%;
+    text-align: left;
+  }
+
+  .cart-item-controls {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+}
