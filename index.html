@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/root.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./styles/basket.css">
+  <link rel="shortcut icon" href="./assets/icon/favicon-16x16.png" type="image/x-icon">
+  <title>BestellAPP</title>
+</head>
+
+<body>
+
+
+  <div class="hero-section">
+    <img src="./assets/img/wook.png" alt="Gebratener Reis im Wok" class="hero-image">
+    <div class="container">
+    <div class="hero-overlay">
+      <div class="hero-title">
+      <img src="./assets/icon/favicon-32x32.png" alt="Logo">
+      <h1>BestellAPP</h1>
+    </div>
+      <div class="restaurant-info">
+        <span class="delivery-info">⏱ Min. 15,00 €</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <main>
+    <div class="container">
+      <div class="search-section">
+        <input 
+          type="text" 
+          class="search-input" 
+          placeholder="min. 3 Zeichen!" 
+          oninput="handleSearch(this.value)">
+      </div>
+
+      <nav class="category-nav">
+        <button class="category-btn active" data-category="Rice" onclick="handleCategoryClick(this)">Reisgerichte</button>
+        <button class="category-btn" data-category="Noodles" onclick="handleCategoryClick(this)">Nudelgerichte</button>
+        <button class="category-btn" data-category="Soups" onclick="handleCategoryClick(this)">Suppen</button>
+        <button class="category-btn" data-category="Desserts" onclick="handleCategoryClick(this)">Desserten</button>
+        <button class="category-btn" data-category="Drinks" onclick="handleCategoryClick(this)">Getränke</button>
+      </nav>
+
+      <div id="menu-container"></div>
+    </div>
+  </main>
+
+  <aside class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Warenkorb</h3>
+      <button class="close-cart-btn" onclick="closeCart()">✕</button>
+    </div>
+
+    <div class="delivery-info-box">
+      <div class="delivery-row"><span class="delivery-icon">🚚</span><span>Lieferung ab 16:00</span></div>
+      <div class="delivery-row"><span class="delivery-icon">📦</span><span>Abholung ab 15:33</span></div>
+    </div>
+
+    <ul id="cart-items" class="cart-items"></ul>
+    <div id="cart_content_wrapper"></div>
+
+    <div class="suggestions-section">
+      <h4>Unsere Favoriten</h4>
+      <div class="suggestion-item">
+        <span>Gebratener Reis mit Gemüse</span>
+        <span class="suggestion-price">9,99 €</span>
+        <button class="suggestion-add" onclick="addProductById(1)">+</button>
+      </div>
+      <div class="suggestion-item">
+        <span>Sesambällchen</span>
+        <span class="suggestion-price">4,99 €</span>
+        <button class="suggestion-add" onclick="addProductById(13)">+</button>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="summary-row"><span>Zwischensumme</span><span id="subtotal">0,00 €</span></div>
+      <div class="summary-total"><span><strong>Gesamt</strong></span><span id="total-price"><strong>0,00 €</strong></span></div>
+    </div>
+
+    <button id="checkout-btn" class="checkout-btn">Warenkorb ist leer</button>
+  </aside>
+
+  <!-- Popup -->
+  <div class="popup-overlay" id="popup" style="display: none">
+    <div class="card">
+      <div class="container">
+        <div class="left"><div class="status-ind"></div></div>
+        <div class="right">
+          <div class="text-wrap">
+            <p class="text-content" id="popup-message">Nachricht hier</p>
+            <p class="time" id="popup-title">Titel hier</p>
+          </div>
+          <div class="button-wrap">
+            <button class="primary-cta" onclick="hidePopup()">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+ 
+  <button id="cart-fab" class="cart-fab" onclick="toggleCart()" aria-label="Warenkorb öffnen">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.45A1.99 1.99 0 0 0 10 19h9v-2h-8.42a.25.25 0 0 1-.22-.37L11 14h6.55a2 2 0 0 0 1.85-1.23L22 6H6.42l-.7-2z"></path>
+    </svg>
+    <span id="cart-fab-badge" class="fab-badge" hidden>0</span>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="logo">
+        <img src="./assets/icon/favicon-32x32.png" alt="Logo">
+      </div>
+      <address>by Kseniya Küntzle</address>
+    </div>
+  </footer>
+
+  <script src="./scripts/db.js"></script>
+  <script src="./scripts/template.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
