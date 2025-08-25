@@ -39,47 +39,24 @@ function renderMenu() {
   }
 }
 
-
-function handleSearch(searchTerm) {
-  const term = searchTerm.trim().toLowerCase();
-
-  if (term.length < 3) {
-    renderMenu(); 
-    return;
-  }
+function handleSearch(term) {
+  const query = term.trim().toLowerCase();
+  if (query.length < 3) return renderMenu();
 
   let results = [];
 
   for (let category in myDishes) {
-    const matched = myDishes[category].filter(dish =>
-      dish.name.toLowerCase().includes(term) ||
-      dish.description.toLowerCase().includes(term)
+    results = results.concat(
+      myDishes[category].filter(dish =>
+        dish.name.toLowerCase().includes(query) ||
+        dish.description.toLowerCase().includes(query)
+      )
     );
-    results = results.concat(matched);
   }
 
-  menuContainer.innerHTML = "";
-
-  if (results.length === 0) {
-    menuContainer.innerHTML = "<p>Keine Treffer gefunden.</p>";
-  } else {
-    for (let i = 0; i < results.length; i++) {
-      const d = results[i];
-      menuContainer.innerHTML += `
-        <div class="product-card">
-          <img src="${d.image}" alt="${d.name}" class="product-image">
-          <div class="product-info">
-            <div class="product-text">
-              <strong>${d.name}</strong>
-              <p>${d.description}</p>
-              <span class="product-price">${formatPrice(d.price)}</span>
-            </div>
-            <button class="product-add-btn" onclick="addProductById(${d.id})">+</button>
-          </div>
-        </div>
-      `;
-    }
-  }
+  menuContainer.innerHTML = results.length
+    ? results.map(createProductHTML).join("")
+    : "<p>Keine Treffer gefunden.</p>";
 }
 
 

@@ -40,3 +40,19 @@ function getProductTemplateFromCategory(category, index) {
     </div>
   `;
 }
+
+function createProductHTML(dish) {
+  return `
+    <div class="product-card">
+      <img src="${dish.image}" alt="${dish.name}" class="product-image">
+      <div class="product-info">
+        <div class="product-text">
+          <strong>${dish.name}</strong>
+          <p>${dish.description}</p>
+          <span class="product-price">${formatPrice(dish.price)}</span>
+        </div>
+        <button class="product-add-btn" onclick="addProductById(${dish.id})">+</button>
+      </div>
+    </div>
+  `;
+}
