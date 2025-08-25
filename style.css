@@ -961,11 +961,11 @@ footer img {
 }
 .hero-title {
   display: flex;
-  align-items: center;  /* Logo und Text vertikal zentrieren */
-  gap: 10px;            /* Abstand zwischen Bild und Text */
+  align-items: center;  
+  gap: 10px;            
 }
 
 .hero-title img {
-  width: 40px;   /* Logo-Größe anpassen */
+  width: 40px;   
   height: 40px;
 }
