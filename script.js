@@ -15,7 +15,7 @@ const cartFab = document.getElementById("cart-fab");
 
 
 let savedCart = localStorage.getItem("cart");
-var cart = savedCart ? JSON.parse(savedCart) : [];
+let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
 
 function formatPrice(n) {
